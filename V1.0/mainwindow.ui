@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!--
+ *	This file is part of PSN Birthday Recover.
+ *
+ *	Copyright (C) 2013 Maël A
+ *
+ *	PSN Birthday Recover is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  PSN Birthday Recover is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with PSN Birthday Recover.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+-->
+ 
+<!--
+ *
+ *	This program uses Qt version 5.1.0
+ *
+ *	Qt is available under the terms of the GNU Lesser General Public License
+ *	version 2.1 as published by the Free Software Foundation.
+ *
+ *	Copyright(C) 2013 Digia Plc and/or its subsidiary(-ies) and other contributors.
+ *
+ *	Qt and the Qt logo are trademarks of Digia Plc and/or its subsidiary(-ies)
+ *
+ *	Qt is developed as an open source project on qt-project.org.
+ *
+ *	Qt is a Digia product. See qt.digia.com for more information.
+ *
+ *
+-->
+
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QWidget" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>264</width>
+    <height>338</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>264</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>PSN Birthday Recover</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Compte</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Email du compte :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditMail">
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string>account@email.com</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Avancé</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Console ID :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditID">
+        <property name="text">
+         <string>000000010005000104088dc54953942700000000000000000000000000000000</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Progression</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="hLayoutDate">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Date de naissance testée :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDateEdit" name="dateEdit">
+          <property name="date">
+           <date>
+            <year>1900</year>
+            <month>1</month>
+            <day>1</day>
+           </date>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="progressBar">
+        <property name="maximum">
+         <number>41245</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>Commande</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="buttonStart">
+        <property name="text">
+         <string>Démarrer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonStop">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Arrêter</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="buttonAbout">
+     <property name="text">
+      <string>A propos</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="buttonQuit">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>Quitter</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonQuit</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>205</x>
+     <y>324</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>222</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
