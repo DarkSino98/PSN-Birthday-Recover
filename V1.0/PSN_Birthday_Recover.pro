@@ -24,3 +24,5 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     aboutwindow.ui
+	
+TRANSLATIONS = psnbirthdayrecover_en.ts psnbirthdayrecover_fr.ts

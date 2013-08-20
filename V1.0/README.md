@@ -7,6 +7,8 @@ This repository hold the source code of the program PSN Birthday Recover
 
 This program allow you to recover the birth date of your PSN/SEN account.
 
+You can download the windows binaries here: https://mega.co.nz/#!l8EESR4B!PeGl4BBf1senkeyBZMflYxi9fBMtx4ZxiDUcTCv2ll4 (EN) or here https://mega.co.nz/#!kxNlXRYR!RgLG8C_blvIq7G559HsH9kErBTpMrvVGHT8H5Zm6yt4 (FR)
+
 ====================
 
 PSN Birthday is free software: you can redistribute it and/or modify
