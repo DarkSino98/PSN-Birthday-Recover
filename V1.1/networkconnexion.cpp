@@ -1,7 +1,7 @@
 /*
  *	This file is part of PSN Birthday Recover.
  *
- *	Copyright(C) 2013 Maël A
+ *	Copyright (C) 2013 Maël A
  *
  *	PSN Birthday Recover is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  */
  
-/*
+ /*
  *	This program uses Qt version 5.1.0
  *
  *	Qt is available under the terms of the GNU Lesser General Public License
@@ -35,6 +35,7 @@
  */
 
 #include "networkconnexion.h"
+#include "mainwindow.h"
 
 NetworkConnexion::NetworkConnexion(QWidget *parent)
 {
@@ -44,7 +45,6 @@ NetworkConnexion::NetworkConnexion(QWidget *parent)
     month = 1;
     year = 1900;
     initialisation = true;
-    progression = 0;
 
     httpManager = new QNetworkAccessManager(this);
     httpRequest = new QNetworkRequest();
@@ -76,12 +76,12 @@ void NetworkConnexion::managerSslError(QNetworkReply *reply, const QList<QSslErr
         nbr.setNum(i+1);
         errorMessage += "Erreur " + nbr + " : " + errors.at(i).errorString() + "\n";
     }
-    QMessageBox::critical(parentWidget, "Erreur SSL", errorMessage);
+    emit showErrorMessage("Erreur SSL", errorMessage);
 }
 
 void NetworkConnexion::replyNetworkError(QNetworkReply::NetworkError code)
 {
-    QMessageBox::critical(parentWidget, "Erreur réseau", "Erreur : " + code);
+    emit showErrorMessage("Erreur réseau", "Erreur : " + code);
 }
 
 void NetworkConnexion::requestFinished(QNetworkReply *reply)
@@ -104,13 +104,12 @@ void NetworkConnexion::requestFinished(QNetworkReply *reply)
 
         if(!(stringReply.left(2)=="=O"))
         {
-            emit progressionChanged(41245, day, month, year);
+            emit progressionChanged(true);
             emit birthdayRecovered(day, month, year);
         }
         else
         {
-            progression += 1;
-            emit progressionChanged(progression, day, month, year);
+            emit progressionChanged(false);
             day +=1;
             if(day==32)
             {
@@ -187,10 +186,8 @@ void NetworkConnexion::setConsoleID(QString consoleID)
     NetworkConnexion::consoleID = consoleID;
 }
 
-void NetworkConnexion::setStart(int day, int month, int year)
+void NetworkConnexion::setStart(int year)
 {
-    NetworkConnexion::day = day;
-    NetworkConnexion::month = month;
     NetworkConnexion::year = year;
 }
 

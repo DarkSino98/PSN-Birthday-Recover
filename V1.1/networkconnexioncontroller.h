@@ -1,7 +1,7 @@
 /*
  *	This file is part of PSN Birthday Recover.
  *
- *	Copyright(C) 2013 Maël A
+ *	Copyright (C) 2013 Maël A
  *
  *	PSN Birthday Recover is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  */
  
-/*
+ /*
  *	This program uses Qt version 5.1.0
  *
  *	Qt is available under the terms of the GNU Lesser General Public License
@@ -33,21 +33,42 @@
  *	Qt is a Digia product. See qt.digia.com for more information.
  *
  */
- 
-#include "aboutwindow.h"
-#include "ui_aboutwindow.h"
 
-AboutWindow::AboutWindow(QWidget *parent) : QWidget(parent), ui(new Ui::AboutWindow)
-{
-    ui->setupUi(this);
-}
+#ifndef NETWORKCONNEXIONCONTROLLER_H
+#define NETWORKCONNEXIONCONTROLLER_H
 
-AboutWindow::~AboutWindow()
-{
-    delete ui;
-}
+#include <QtCore>
+#include <QtGui>
+#include <QtNetwork>
+#include "networkconnexion.h"
 
-void AboutWindow::on_buttonQt_clicked()
+class NetworkConnexionController : public QObject
 {
-    QMessageBox::aboutQt(this);
-}
+    Q_OBJECT
+public:
+    explicit NetworkConnexionController(QWidget *parent = 0);
+    ~NetworkConnexionController();
+    void setEmail(QString email);
+    void setConsoleID(QString consoleID);
+    void setStart(int year);
+    void initiate();
+    
+signals:
+    void birthdayRecoveredSignal(int day, int month, int year);
+    void progressionChangedSignal(bool end);
+    void showErrorMessageSignal(QString title, QString errorMessage);
+    void starting();
+    
+public slots:
+    void birthdayRecoveredSlot(int day, int month, int year);
+    void progressionChangedSlot(bool end);
+    void showErrorMessageSlot(QString title, QString errorMessage);
+
+private:
+    NetworkConnexion *connexion;
+    QThread connexionThread;
+    QWidget *parentWidget;
+    
+};
+
+#endif // NETWORKCONNEXIONCONTROLLER_H

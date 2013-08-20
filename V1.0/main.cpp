@@ -1,7 +1,7 @@
 /*
  *	This file is part of PSN Birthday Recover.
  *
- *	Copyright (C) 2013 Maël A
+ *	Copyright(C) 2013 Maël A
  *
  *	PSN Birthday Recover is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  */
  
- /*
+/*
  *	This program uses Qt version 5.1.0
  *
  *	Qt is available under the terms of the GNU Lesser General Public License

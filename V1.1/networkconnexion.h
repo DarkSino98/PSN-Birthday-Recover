@@ -1,7 +1,7 @@
 /*
  *	This file is part of PSN Birthday Recover.
  *
- *	Copyright(C) 2013 Maël A
+ *	Copyright (C) 2013 Maël A
  *
  *	PSN Birthday Recover is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  */
  
-/*
+ /*
  *	This program uses Qt version 5.1.0
  *
  *	Qt is available under the terms of the GNU Lesser General Public License
@@ -33,21 +33,57 @@
  *	Qt is a Digia product. See qt.digia.com for more information.
  *
  */
- 
-#include "aboutwindow.h"
-#include "ui_aboutwindow.h"
 
-AboutWindow::AboutWindow(QWidget *parent) : QWidget(parent), ui(new Ui::AboutWindow)
-{
-    ui->setupUi(this);
-}
+#ifndef NETWORKCONNEXION_H
+#define NETWORKCONNEXION_H
 
-AboutWindow::~AboutWindow()
-{
-    delete ui;
-}
+#include <QtNetwork>
+#include <QtCore>
+#include <QtGui>
 
-void AboutWindow::on_buttonQt_clicked()
+class NetworkConnexion : public QObject
 {
-    QMessageBox::aboutQt(this);
-}
+Q_OBJECT
+
+public slots:
+    void replyNetworkError(QNetworkReply::NetworkError code);
+    void managerSslError(QNetworkReply * reply, const QList<QSslError> & errors);
+    void requestFinished(QNetworkReply * reply);
+    void initiate();
+
+signals:
+    void birthdayRecovered(int day, int month, int year);
+    void progressionChanged(bool end);
+    void showErrorMessage(QString title, QString errorMessage);
+
+public:
+    NetworkConnexion(QWidget *parent);
+    ~NetworkConnexion();
+    void setEmail(QString email);
+    void setConsoleID(QString consoleID);
+    void setStart(int year);
+
+protected:
+    void recover();
+
+private:
+    QWidget *parentWidget;
+
+    QString consoleID;
+    QString email;
+
+    QNetworkRequest *httpRequest;
+    QNetworkReply *httpReply;
+    QNetworkAccessManager *httpManager;
+
+    QSslConfiguration *sslConfig;
+
+    bool initialisation;
+    int day;
+    int month;
+    int year;
+
+    QThread connexionThread;
+};
+
+#endif // NETWORKCONNEXION_H

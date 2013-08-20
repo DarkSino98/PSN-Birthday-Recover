@@ -1,7 +1,7 @@
 /*
  *	This file is part of PSN Birthday Recover.
  *
- *	Copyright(C) 2013 Maël A
+ *	Copyright (C) 2013 Maël A
  *
  *	PSN Birthday Recover is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  */
  
-/*
+ /*
  *	This program uses Qt version 5.1.0
  *
  *	Qt is available under the terms of the GNU Lesser General Public License
@@ -33,21 +33,32 @@
  *	Qt is a Digia product. See qt.digia.com for more information.
  *
  */
- 
-#include "aboutwindow.h"
-#include "ui_aboutwindow.h"
 
-AboutWindow::AboutWindow(QWidget *parent) : QWidget(parent), ui(new Ui::AboutWindow)
+#ifndef ABOUTWINDOW_H
+#define ABOUTWINDOW_H
+
+#include <QWidget>
+#include <QMessageBox>
+
+namespace Ui
 {
-    ui->setupUi(this);
+    class AboutWindow;
 }
 
-AboutWindow::~AboutWindow()
+class AboutWindow : public QWidget
 {
-    delete ui;
-}
+Q_OBJECT
 
-void AboutWindow::on_buttonQt_clicked()
-{
-    QMessageBox::aboutQt(this);
-}
+public slots:
+    void on_buttonQt_clicked();
+    
+public:
+    explicit AboutWindow(QWidget *parent = 0);
+    ~AboutWindow();
+    
+private:
+    Ui::AboutWindow *ui;
+
+};
+
+#endif // ABOUTWINDOW_H

@@ -1,7 +1,7 @@
 /*
  *	This file is part of PSN Birthday Recover.
  *
- *	Copyright(C) 2013 Maël A
+ *	Copyright (C) 2013 Maël A
  *
  *	PSN Birthday Recover is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  */
  
-/*
+ /*
  *	This program uses Qt version 5.1.0
  *
  *	Qt is available under the terms of the GNU Lesser General Public License
@@ -33,21 +33,42 @@
  *	Qt is a Digia product. See qt.digia.com for more information.
  *
  */
- 
+
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include <QWidget>
+#include <QtCore>
+#include <QtGui>
 #include "aboutwindow.h"
-#include "ui_aboutwindow.h"
+#include "networkconnexion.h"
+#include "networkconnexioncontroller.h"
 
-AboutWindow::AboutWindow(QWidget *parent) : QWidget(parent), ui(new Ui::AboutWindow)
+namespace Ui
 {
-    ui->setupUi(this);
+    class MainWindow;
 }
 
-AboutWindow::~AboutWindow()
+class MainWindow : public QWidget
 {
-    delete ui;
-}
+Q_OBJECT
 
-void AboutWindow::on_buttonQt_clicked()
-{
-    QMessageBox::aboutQt(this);
-}
+public slots:
+    void on_buttonAbout_clicked();
+    void on_buttonStart_clicked();
+    void on_buttonStop_clicked();
+    void birthdayRecovered(int day, int month, int year);
+    void progressionChanged(bool end);
+    void showErrorMessage(QString title, QString text);
+    
+public:
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
+    
+private:
+    Ui::MainWindow *ui;
+    AboutWindow aboutw;
+    QList<NetworkConnexionController *> controllerList;
+};
+
+#endif // MAINWINDOW_H
