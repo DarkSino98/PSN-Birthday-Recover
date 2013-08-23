@@ -9,9 +9,9 @@ This program allow you to recover the birth date of your PSN/SEN account.
 
 You can download the windows binaries here: 
 
-https://mega.co.nz/#!xokTFJDa!FsRvllWFL79u3ISTkd4hVT29T-gYIvwMesQWUIL7UVk (EN)
+https://mega.co.nz/#!x9FwAJaQ!D-gTlR-Ub7sLzqzVvz9i-FT_vvlx1-57N7VNdpVKaUQ (EN)
 or here 
-https://mega.co.nz/#!EgNUgILK!f8mEwWO_6RrSYhPVdmREEgx2_ORpaVofhbAORBFFyac (FR)
+https://mega.co.nz/#!8wEFzJ5I!L7DqO3MzZENJZkMdupGF5hXqUGcQT1QdZRMw4ow9W44 (FR)
 
 ====================
 
